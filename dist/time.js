@@ -46,8 +46,8 @@
 
 	"use strict";
 	
-	module.exports = function timeExports(uitl) {
-		uitl.extendDeep({
+	module.exports = function timeExports(util) {
+		util.extendDeep({
 			//获取当前时间开始
 			now: function now() {
 				return new Date().getTime();
@@ -55,7 +55,7 @@
 	
 			//获取php的时间戳
 			time: function time() {
-				return parseInt(uitl.now() / 1000);
+				return parseInt(util.now() / 1000);
 			},
 	
 	
@@ -68,9 +68,9 @@
 	   * @return   {string}                        [格式化的时间字符串]
 	   */
 			gmdate: function gmdate(format, timestamp) {
-				timestamp = timestamp === undefined ? uitl.time() : timestamp;
+				timestamp = timestamp === undefined ? util.time() : timestamp;
 				timestamp = parseInt(timestamp) + 60 * new Date().getTimezoneOffset();
-				return uitl.date(format, timestamp);
+				return util.date(format, timestamp);
 			},
 	
 			/**
@@ -281,8 +281,8 @@
 
 	'use strict';
 	
-	module.exports = function timeExports(uitl) {
-		uitl.extendDeep({
+	module.exports = function timeExports(util) {
+		util.extendDeep({
 			strtotime: function strtotime(text, now) {
 				//  discuss at: http://locutus.io/php/strtotime/
 				// original by: Caio Ariede (http://caioariede.com)
