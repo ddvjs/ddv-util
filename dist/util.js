@@ -294,7 +294,8 @@
 	};
 	util.extendDeep = function extendDeep() {
 	    var args = util.argsToArray(arguments || []);
-	    args.push(true, util);
+	    args.unshift(true, util);
+	    console.log('dd', args);
 	    return util.extend.apply(util, args);
 	};
 	util.extend = function extend() {
