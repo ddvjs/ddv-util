@@ -4,7 +4,7 @@ var path = require("path");
 module.exports = {
     entry: {
         "util": "./lib/index.js",
-        "time": "./lib/time.js"
+        "time": "./time"
     },
     output: {
         path: path.join(__dirname, './dist'),  //设置打包后的js的输出位置

@@ -1,12 +1,12 @@
-module.exports = function timeExports(uitl) {
-	uitl.extendDeep({
+module.exports = function timeExports(util) {
+	util.extendDeep({
 		//获取当前时间开始
 		now() {
 			return (new Date()).getTime();
 		},
 		//获取php的时间戳
 		time() {
-			return parseInt(uitl.now()/1000);
+			return parseInt(util.now()/1000);
 		},
 
 		/**
@@ -18,9 +18,9 @@ module.exports = function timeExports(uitl) {
 		 * @return   {string}                        [格式化的时间字符串]
 		 */
 		 gmdate( format, timestamp ) {
-			timestamp = (timestamp===undefined)?uitl.time():timestamp;
+			timestamp = (timestamp===undefined)?util.time():timestamp;
 			timestamp = parseInt(timestamp)+(60*(new Date()).getTimezoneOffset());
-			return uitl.date(format, timestamp);
+			return util.date(format, timestamp);
 		 },
 		/**
 		 * [date 和PHP一样的时间戳格式化函数 格式化后是本地时间]

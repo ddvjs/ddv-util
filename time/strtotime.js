@@ -1,5 +1,5 @@
-module.exports = function timeExports(uitl) {
-	uitl.extendDeep({
+module.exports = function timeExports(util) {
+	util.extendDeep({
 		strtotime(text, now) {
 			//  discuss at: http://locutus.io/php/strtotime/
 			// original by: Caio Ariede (http://caioariede.com)
