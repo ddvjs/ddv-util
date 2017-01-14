@@ -284,6 +284,9 @@
 	module.exports = function timeExports(util) {
 		util.extendDeep({
 			strtotime: function strtotime(text, now) {
+				if (text && text instanceof Date) {
+					return text.getTime() / 1000;
+				}
 				//  discuss at: http://locutus.io/php/strtotime/
 				// original by: Caio Ariede (http://caioariede.com)
 				// improved by: Kevin van Zonneveld (http://kvz.io)

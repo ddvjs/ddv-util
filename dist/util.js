@@ -203,7 +203,7 @@
 			}
 		}
 	};
-	util.globalInit = function (name, content) {
+	util.globalInit = function (name, content, isThis) {
 		if (!content) {
 			if (typeof global !== 'undefined' && global && global.global === global) {
 				content = global;
@@ -215,6 +215,9 @@
 		}
 		name = name || 'd';
 		content[name] = util;
+		if (isThis === true && this) {
+			this[name] = util;
+		}
 	};
 	__webpack_require__(3);
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
