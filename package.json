@@ -4,7 +4,8 @@
   "description": "ddv-util",
   "main": "./lib/util.js",
   "scripts": {
-    "dist": "webpack"
+    "dist": "npm run lint&&webpack",
+    "lint": "eslint --ext .js lib"
   },
   "repository": {
     "type": "git",
@@ -25,18 +26,29 @@
     "undef": true,
     "unused": true,
     "node": true,
+    "browser": true,
     "predef": [
       "module",
       "require",
       "console",
       "process"
-    ]
+    ],
+    "arrow-parens": 0,
+    "generator-star-spacing": 0,
+    "no-debugger": 0,
+    "no-console": 2
   },
   "homepage": "https://github.com/ddvjs/ddv-util#readme",
   "devDependencies": {
-    "babel-core": "^6.21.0",
+    "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.18.0",
-    "webpack": "^1.14.0"
+    "babel-eslint": "^7.0.0",
+    "babel-preset-es2015": "^6.22.0",
+    "eslint": "^3.10.2",
+    "eslint-plugin-html": "^1.3.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "webpack": "^2.2.0"
   }
 }
