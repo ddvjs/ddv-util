@@ -1,11 +1,13 @@
 {
   "name": "ddv-util",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "ddv-util",
   "main": "./lib/util.js",
   "scripts": {
+    "lint": "eslint --ext .js lib time --ignore-pattern node_modules",
     "dist": "npm run lint&&webpack",
-    "lint": "eslint --ext .js lib time --ignore-pattern node_modules"
+    "precommit": "npm run lint",
+    "prepublish": "npm run lint"
   },
   "repository": {
     "type": "git",
