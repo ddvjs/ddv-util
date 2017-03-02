@@ -366,12 +366,10 @@ module.exports = function timeExports(util) {
     now: function now() {
       return new Date().getTime();
     },
-
     // 获取php的时间戳
     time: function time() {
       return parseInt(util.now() / 1000);
     },
-
 
     /**
      * [gmdate 和PHP一样的时间戳格式化函数 格式化后是格林时间]
@@ -386,7 +384,6 @@ module.exports = function timeExports(util) {
       timestamp = parseInt(timestamp) + 60 * new Date().getTimezoneOffset();
       return util.date(format, timestamp);
     },
-
     /**
      * [date 和PHP一样的时间戳格式化函数 格式化后是本地时间]
      * @author: 桦 <yuchonghua@163.com>

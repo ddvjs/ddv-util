@@ -167,16 +167,16 @@ util.ddvFnCall = function ddvFnCall(firstArg, fnCmd) {
         fnName = fnName || fnCmd && fnCmd.fn || fnCmd || '';
         /* eslint-disable no-new-wrappers */
         fnName = fnName.toString && fnName.toString() || new String(fnName).toString();
-        throw new util.DdvUtilError(util.ddvFnCallErrorNotFnTip + ': ' + fnName);
+        throw new Error(util.ddvFnCallErrorNotFnTip + ': ' + fnName);
       }
     } else {
       fnName = fnName || fnCmd && fnCmd.fn || fnCmd || '';
       /* eslint-disable no-new-wrappers */
       fnName = fnName.toString && fnName.toString() || new String(fnName).toString();
-      throw new util.DdvUtilError(util.ddvFnCallErrorNotFnTip + ': ' + fnName);
+      throw new Error(util.ddvFnCallErrorNotFnTip + ': ' + fnName);
     }
   } else {
-    throw new util.DdvUtilError(util.ddvFnCallErrorTip);
+    throw new Error(util.ddvFnCallErrorTip);
   }
   return '';
 };
@@ -227,7 +227,7 @@ util.globalInit = function (name, content, isThis) {
     } else if (typeof window !== 'undefined' && window && window.window === window) {
       content = window;
     } else {
-      throw new util.DdvUtilError('Global variable global or window not found');
+      throw new Error('Global variable global or window not found');
     }
   }
   name = name || 'd';
@@ -248,12 +248,6 @@ __webpack_require__(2);
 
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var util = __webpack_require__(0);
 // 方法的字符串
@@ -383,29 +377,6 @@ util.extend = function extend() {
   // Return the modified object
   return target;
 };
-// 自定义错误类型
-util.DdvUtilError = function (_Error) {
-  _inherits(DdvUtilError, _Error);
-
-  // 构造函数
-  function DdvUtilError(message, stack) {
-    _classCallCheck(this, DdvUtilError);
-
-    var _this = _possibleConstructorReturn(this, (DdvUtilError.__proto__ || Object.getPrototypeOf(DdvUtilError)).call(this, message));
-    // 调用父类构造函数
-
-
-    message = message || 'Unknow Error';
-    _this.name = _this.name || 'Error';
-    _this.type = _this.type || 'DdvUtilError';
-    _this.error_id = _this.error_id || 'UNKNOW_ERROR';
-    _this.stack += stack ? '\n' + stack : '';
-    message = stack = void 0;
-    return _this;
-  }
-
-  return DdvUtilError;
-}(Error);
 
 /***/ }),
 /* 3 */
