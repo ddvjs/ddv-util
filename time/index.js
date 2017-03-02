@@ -1,11 +1,11 @@
 module.exports = function timeExports (util) {
   util.extendDeep({
     // 获取当前时间开始
-    now () {
+    now: function () {
       return (new Date()).getTime()
     },
     // 获取php的时间戳
-    time () {
+    time: function () {
       return parseInt(util.now() / 1000)
     },
 
@@ -17,7 +17,7 @@ module.exports = function timeExports (util) {
      * @param    {int}                 timestamp [要格式化的时间 默认为当前时间]
      * @return   {string}                        [格式化的时间字符串]
      */
-    gmdate (format, timestamp) {
+    gmdate: function (format, timestamp) {
       timestamp = (timestamp === undefined) ? util.time() : timestamp
       timestamp = parseInt(timestamp) + (60 * (new Date()).getTimezoneOffset())
       return util.date(format, timestamp)
@@ -30,7 +30,7 @@ module.exports = function timeExports (util) {
      * @param    {int}                 timestamp [要格式化的时间 默认为当前时间]
      * @return   {string}                        [格式化的时间字符串]
      */
-    date (format, timestamp) {
+    date: function (format, timestamp) {
       var jsdate = ((timestamp) ? new Date(timestamp * 1000) : new Date())
       var pad = function (n, c) {
         if ((n = n + '').length < c) {

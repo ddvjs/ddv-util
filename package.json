@@ -4,10 +4,10 @@
   "description": "ddv-util",
   "main": "./lib/util.js",
   "scripts": {
-    "lint": "eslint --ext .js lib time --ignore-pattern node_modules",
+    "lint": "eslint --ext .js lib time --ignore-pattern dist",
     "dist": "npm run lint&&webpack",
-    "precommit": "npm run lint",
-    "prepublish": "npm run lint"
+    "precommit": "npm run dist",
+    "prepublish": "npm run dist"
   },
   "repository": {
     "type": "git",

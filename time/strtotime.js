@@ -1,6 +1,6 @@
 module.exports = function timeExports (util) {
   util.extendDeep({
-    strtotime (text, now) {
+    strtotime: function (text, now) {
       if (text && text instanceof Date) {
         return (text.getTime() / 1000)
       }
