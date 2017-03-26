@@ -63,12 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 1:
+/******/ ([
+/* 0 */,
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -353,8 +353,9 @@ module.exports = function timeExports(util) {
 };
 
 /***/ }),
-
-/***/ 5:
+/* 2 */,
+/* 3 */,
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -577,6 +578,5 @@ module.exports = function timeExports(util) {
 };
 
 /***/ })
-
-/******/ });
+/******/ ]);
 //# sourceMappingURL=time.js.map
