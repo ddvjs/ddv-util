@@ -83,7 +83,7 @@ module.exports = function timeExports (util) {
               }
 
               return new Date(match[1], parseInt(match[3], 10) - 1, match[5],
-                  match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
+                match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
             case '.':
               // YYYY.M.D is not parsed by strtotime()
               return fail
@@ -94,7 +94,7 @@ module.exports = function timeExports (util) {
               }
 
               return new Date(match[1], parseInt(match[3], 10) - 1, match[5],
-                  match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
+                match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
           }
         } else if (match[5] > 1901) {
           switch (match[2]) {
@@ -105,7 +105,7 @@ module.exports = function timeExports (util) {
               }
 
               return new Date(match[5], parseInt(match[3], 10) - 1, match[1],
-                  match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
+                match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
             case '.':
               // D.M.YYYY
               if (match[3] > 12 || match[1] > 31) {
@@ -113,7 +113,7 @@ module.exports = function timeExports (util) {
               }
 
               return new Date(match[5], parseInt(match[3], 10) - 1, match[1],
-                  match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
+                match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
             case '/':
               // M/D/YYYY
               if (match[1] > 12 || match[3] > 31) {
@@ -121,7 +121,7 @@ module.exports = function timeExports (util) {
               }
 
               return new Date(match[5], parseInt(match[1], 10) - 1, match[3],
-                  match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
+                match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
           }
         } else {
           switch (match[2]) {
@@ -133,7 +133,7 @@ module.exports = function timeExports (util) {
 
               year = match[1] >= 0 && match[1] <= 38 ? +match[1] + 2000 : match[1]
               return new Date(year, parseInt(match[3], 10) - 1, match[5],
-                  match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
+                match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
             case '.':
               // D.M.YY or H.MM.SS
               if (match[5] >= 70) {
@@ -143,7 +143,7 @@ module.exports = function timeExports (util) {
                 }
 
                 return new Date(match[5], parseInt(match[3], 10) - 1, match[1],
-                    match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
+                  match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
               }
               if (match[5] < 60 && !match[6]) {
                 // H.MM.SS
@@ -153,7 +153,7 @@ module.exports = function timeExports (util) {
 
                 today = new Date()
                 return new Date(today.getFullYear(), today.getMonth(), today.getDate(),
-                    match[1] || 0, match[3] || 0, match[5] || 0, match[9] || 0) / 1000
+                  match[1] || 0, match[3] || 0, match[5] || 0, match[9] || 0) / 1000
               }
 
               // invalid format, cannot be parsed
@@ -166,7 +166,7 @@ module.exports = function timeExports (util) {
 
               year = match[5] >= 0 && match[5] <= 38 ? +match[5] + 2000 : match[5]
               return new Date(year, parseInt(match[1], 10) - 1, match[3],
-                  match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
+                match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000
             case ':':
               // HH:MM:SS
               if (match[1] > 23 || match[3] > 59 || match[5] > 59) {
@@ -175,7 +175,7 @@ module.exports = function timeExports (util) {
 
               today = new Date()
               return new Date(today.getFullYear(), today.getMonth(), today.getDate(),
-                  match[1] || 0, match[3] || 0, match[5] || 0) / 1000
+                match[1] || 0, match[3] || 0, match[5] || 0) / 1000
           }
         }
       }

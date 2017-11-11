@@ -111,7 +111,7 @@ module.exports = function timeExports (util) {
           if ((n = jsdate.getMonth() + 1) === 2) {
             return 28 + f.L()
           } else {
-            if (n & 1 && n < 8 || !(n & 1) && n > 7) {
+            if (((n & 1) && n < 8) || (!(n & 1) && n > 7)) {
               return 31
             } else {
               return 30

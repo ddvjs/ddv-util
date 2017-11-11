@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -259,7 +259,8 @@ var class2type = {};
 });
 util.isArray = Array.isArray;
 util.isFunction = function isFunction(fn) {
-  return Boolean((typeof fn === 'undefined' ? 'undefined' : _typeof(fn)) === functionStr);
+  var type = typeof fn === 'undefined' ? 'undefined' : _typeof(fn);
+  return Boolean(type === functionStr);
 };
 util.isArray = function isArray() {
   return Array.isArray.apply(this, arguments);
