@@ -1,6 +1,6 @@
 {
   "name": "ddv-util",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "ddv-util",
   "main": "./lib/util.js",
   "scripts": {

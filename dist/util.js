@@ -75,13 +75,24 @@
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var util = module.exports = function DDV(firstArg, fnCmd) {
-  firstArg = fnCmd = void 0;
-  return util.ddvFnCall.apply(this || util, arguments);
+var util = module.exports = DdvUtil;
+
+function DdvUtil(firstArg, fnCmd) {
+  if (this instanceof util) {
+    return util.constructor.apply(this || util, arguments);
+  } else {
+    return util.vueFilter.apply(this || util, arguments);
+  }
+}
+util.prototype = util;
+util.vueFilterErrorNotFnTip = 'Not a method';
+util.vueFilterErrorTip = 'Must be an object or a method or method name for a string';
+util.constructor = function constructor(fn) {
+  if (util.isFunction(fn)) {
+    fn.call(this || util, this || util);
+  }
 };
-util.ddvFnCallErrorNotFnTip = 'Not a method';
-util.ddvFnCallErrorTip = 'Must be an object or a method or method name for a string';
-util.ddvFnCall = function ddvFnCall(firstArg, fnCmd) {
+util.vueFilter = function vueFilter(firstArg, fnCmd) {
   var t;
   var fnNameArray = [];
   var fn = null;
@@ -155,7 +166,7 @@ util.ddvFnCall = function ddvFnCall(firstArg, fnCmd) {
       // 覆盖回去
       fnNameArray = t;
       // 试图通过这个对象获取这个方法
-      t = util._ddvFnCallGet([obj, util, this], fnNameArray);
+      t = util._vueFilterGet([obj, util, this], fnNameArray);
       if (t) {
         fn = t.fn;
         content = content || t.content;
@@ -167,20 +178,20 @@ util.ddvFnCall = function ddvFnCall(firstArg, fnCmd) {
         fnName = fnName || fnCmd && fnCmd.fn || fnCmd || '';
         /* eslint-disable no-new-wrappers */
         fnName = fnName.toString && fnName.toString() || new String(fnName).toString();
-        throw new Error(util.ddvFnCallErrorNotFnTip + ': ' + fnName);
+        throw new Error(util.vueFilterErrorNotFnTip + ': ' + fnName);
       }
     } else {
       fnName = fnName || fnCmd && fnCmd.fn || fnCmd || '';
       /* eslint-disable no-new-wrappers */
       fnName = fnName.toString && fnName.toString() || new String(fnName).toString();
-      throw new Error(util.ddvFnCallErrorNotFnTip + ': ' + fnName);
+      throw new Error(util.vueFilterErrorNotFnTip + ': ' + fnName);
     }
   } else {
-    throw new Error(util.ddvFnCallErrorTip);
+    throw new Error(util.vueFilterErrorTip);
   }
   return '';
 };
-util._ddvFnCallGet = function (objs, names) {
+util._vueFilterGet = function (objs, names) {
   var t, i, len, obj, _this;
   if (names && names.length < 1) {
     return void 0;
@@ -191,7 +202,7 @@ util._ddvFnCallGet = function (objs, names) {
     for (i = 0; i < len; i++) {
       obj = objs[i];
       if (obj && obj[names[0]]) {
-        t = util._ddvFnCallGet(obj, names);
+        t = util._vueFilterGet(obj, names);
         if (t) {
           i = len = obj = objs = names = void 0;
           return t;
@@ -220,7 +231,7 @@ util._ddvFnCallGet = function (objs, names) {
     }
   }
 };
-util.globalInit = function (name, content, isThis) {
+util.globalInit = function (name, content) {
   if (!content) {
     if (typeof global !== 'undefined' && global && global.global === global) {
       content = global;
@@ -231,10 +242,7 @@ util.globalInit = function (name, content, isThis) {
     }
   }
   name = name || 'd';
-  content[name] = util;
-  if (isThis === true && this) {
-    this[name] = util;
-  }
+  content[name] = this || util;
 };
 __webpack_require__(2);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
@@ -302,17 +310,19 @@ util.argsToArray = function argsToArray(args) {
   return Array.prototype.slice.call(args);
 };
 util.extendInit = function extendInit() {
-  var args = util.argsToArray(arguments || []);
-  args.forEach(function (fn) {
-    if (util.isFunction(fn)) {
-      fn.call(util, util);
+  var args, fn;
+  args = util.argsToArray(arguments || []);
+  for (var i = 0; i < args.length; i++) {
+    if (util.isFunction(fn = args[i])) {
+      fn.call(this || util, this || util);
     }
-  });
+  }
+  args = fn = void 0;
 };
 util.extendDeep = function extendDeep() {
   var args = util.argsToArray(arguments || []);
-  args.unshift(true, util);
-  return util.extend.apply(util, args);
+  args.unshift(true, this || util);
+  return util.extend.apply(this || util, args);
 };
 util.extend = function extend() {
   var options, name, src, copy, copyIsArray, clone;
